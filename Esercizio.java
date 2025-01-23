@@ -1,26 +1,61 @@
 //LEGGERE LE ISTRUZIONI NEL FILE README.md
-
-//Import di Classi Java necessarie al funzionamento del programma
 import java.util.Scanner;
 
-// Classe principale, con metodo main
-class Esercizio {
-    // Il programma parte con una chiamata a main().
-    public static void main(String args[])
-    {
-        //Variabili del programma
-        String nome;
+public class GestioneVettore {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
 
-        //Creo l'oggetto in per l'input da tastiera
-        Scanner in = new Scanner( System.in );
+        // Chiedi all'utente di inserire la dimensione del vettore
+        System.out.print("Inserisci la dimensione del vettore: ");
+        int N = scanner.nextInt();
+        int[] vettore = new int[N];
 
-        //Leggo l'input da tastiera
-        System.out.print("Inserisci il tuo nome: ");
-        nome = in.nextLine();
+        boolean esegui = true;
+        while (esegui) {
+            System.out.println("\nScegli un'opzione:");
+            System.out.println("1. Inserisci elemento");
+            System.out.println("2. Elimina elemento");
+            System.out.println("3. Ricerca elemento");
+            System.out.println("4. Elimina duplicati");
+            System.out.println("5. Visualizza vettore");
+            System.out.println("6. Esci");
+            System.out.print("Scelta: ");
+            int scelta = scanner.nextInt();
 
-        //Output del nome acquisito da tastiera
-        System.out.println("Ciao "+nome+"!");
+            switch (scelta) {
+                case 1:
+                    inserisciElemento(vettore);
+                    break;
+                case 2:
+                    eliminaElemento(vettore);
+                    break;
+                case 3:
+                    ricercaElemento(vettore);
+                    break;
+                case 4:
+                    eliminaDuplicati(vettore);
+                    break;
+                case 5:
+                    visualizzaVettore(vettore);
+                    break;
+                case 6:
+                    esegui = false;
+                    System.out.println("Uscita dal programma...");
+                    break;
+                default:
+                    System.out.println("Scelta non valida, riprova.");
+            }
+        }
+
+        scanner.close();
+
+    public static void visualizzaVettore(int[] vettore) {
+        System.out.print("Vettore: [ ");
+        for (int elemento : vettore) {
+            System.out.print(elemento + " ");
+        }
+        System.out.println("]");
     }
 }
-
 //LEGGERE LE ISTRUZIONI NEL FILE README.md
+
